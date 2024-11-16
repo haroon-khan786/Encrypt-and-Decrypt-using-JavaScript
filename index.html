@@ -1,0 +1,145 @@
+
+<!-- Haroon Naib Khail -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap-5.1.3-dist\css\bootstrap.min.css" />
+    <title>Document</title>
+    <style>
+        .input{
+            min-width: 200px;
+        }
+        @media only screen and (max-width: 995px) {
+            .row{
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container p-5">
+        <!-- Encryption -->
+        <div class="row">
+        <!-- Plain Text -->
+            <div class="input col border rounded  m-3">
+                <textarea name="" id="plainText_get"  rows="5" class="form-control mt-2 mb-2" placeholder="Plain Text"></textarea>
+                <div class="d-flex justify-content-between mt-3 mb-3">
+                    <select id="select_Enc_algorithm" class="form-select w-50">
+                        <option selected disabled>Select your Encryption Algorithem</option>
+                        <option  value="Ciper_encryption">Cesser Ciper</option>
+                        <option  value="AES_encryption">AES Encryption</option>
+                        <option  value="DES_encryption">DES Encryption</option>
+                        <option  value="RSA_encryption">RSA Encryption</option>
+                        <option  disabled>Hashing Algorithm</option>
+                        <option value="md5">MD5</option>
+                        <option value="sha-1">SHA-1</option>
+                        <option value="sha-256">SHA-256</option>
+                        <option value="sha-512">SHA-512</option>
+                        <option value="sha-3">SHA-3</option>
+                        <option value="ripemd-160">RIPEMD-160</option>
+
+                    </select>
+                    <button id="btn_Enc" type="button" class="btn btn-success">Encryption</button>
+                </div>
+            </div>
+        <!-- Ciper Text -->
+            <div class="input col border rounded  m-3">
+                <textarea name="" id="ciperText_show" rows="4" class="form-control mt-2 mb-2" placeholder="Ciper Text" readonly></textarea>
+                <textarea name="" id="key_value_show" rows="3" class="form-control mt-2 mb-2" placeholder="Key Value" readonly></textarea>
+            </div>
+        </div>
+
+        <!-- Decryption -->
+        <div class="row">
+        <!-- Ciper Text -->
+            <div class="input col border rounded  m-3">
+
+                <textarea name="" id="ciperText_get"  rows="5" class="form-control mt-2 mb-2" placeholder="Ciper Text"></textarea>
+                <textarea name="" id="key_value_get" rows="" class="form-control mt-2 mb-2" placeholder="Key Value"></textarea>
+                <div class="d-flex justify-content-between mt-3 mb-3">
+                    <select id="select_Dec_algorithm" class="form-select w-50">
+                        <option selected disabled>Select your Decryption Algorithem</option>
+                        <option  value="Ciper_Decryption">Cesser Ciper Decryption</option>
+                        <option  value="AES_Decryption">AES Decryption</option>
+                        <option  value="DES_Decryption">DES Decryption</option>
+                        <option  value="RSA_Decryption">RSA Decryption</option>
+                    </select>
+                    <button id="btn_Decr" type="button" class="btn rounded-pill btn-success">Decryption</button>
+                </div>
+            </div> 
+
+        <!-- Plain Text -->
+            <div class="input col border rounded  m-3">
+                <textarea name="" id="plainText_show"  rows="5" class="form-control mt-2 mb-2" placeholder="PLain Text" readonly></textarea>
+            </div>  
+        </div>
+
+
+        <!-- Digital signature part -->
+        <div class="row">
+            <h3>Digital Signature Part</h3>
+            <!-- Data to change into digital signature -->
+                <div class="input col border rounded  m-3">
+                    <input id="sign_data" type="text" class="form-control mt-2 mb-2" placeholder="Enter the data you want to change into digital signature">
+                    <div class="d-flex justify-content-end mt-3 mb-3">
+                        <button id="btn_sign" type="button" class="btn rounded-pill btn-success">Signature generation</button>
+                    </div>
+                </div>
+            <!-- encrypted signature -->
+                <div class="input col border rounded  m-3">
+                    <textarea id="enc_sign_show" rows="2" class="form-control mt-2 mb-2" placeholder="Encrypted Digital Signature" readonly></textarea>
+                    <textarea id="publicKey_show" rows="3" class="form-control mt-2 mb-2" placeholder="Public Key Value" readonly></textarea>
+                </div>
+        </div>
+           
+        <!-- Verifying part -->
+        <div class="row">
+            <div class="input col border rounded  m-3">
+                <input id="signature" type="text" class="form-control mt-2 mb-2" placeholder="signature">
+                <input id="publicKey_Get" type="text" class="form-control mt-2 mb-2" placeholder="Public Key">
+                <input id="Digital_enc_Get" type="text" class="form-control mt-2 mb-2" placeholder="Digital Signature Encrypted">
+                <div class="d-flex justify-content-end mt-3 mb-3">
+                    <button id="btn_verify" type="button" class="btn rounded-pill btn-success">Verifying</button>
+                </div>
+            </div>
+            <!-- verify signature -->
+            <div class="input col border rounded  m-3">
+                <textarea id="verify_show"  rows="5" class="form-control mt-2 mb-2" placeholder="verify signature" readonly></textarea>
+            </div> 
+        </div>
+
+        <!-- message integrity detection system -->
+        <div class="row">
+            <h3>Message integrity detection part</h3>
+            <!-- message -->
+                <div class="input col border rounded  m-3">
+                        <input id="message" type="text" class="form-control mt-2 mb-2" placeholder="Message">
+                        <div class="d-flex justify-content-end mt-3 mb-3">
+                            <button id="btn_send" type="button" class="btn rounded-pill btn-success">Send Message</button>
+                        </div>
+                        <input id="recived_message" type="text" class="form-control mt-2 mb-2" placeholder="Recived message">
+                        <div class="d-flex justify-content-end mt-3 mb-3">
+                            <button id="btn_check" type="button" class="btn rounded-pill btn-success">Check Message</button>
+                        </div>
+                        <textarea id="detection" cols="30" rows="1" class="form-control mt-2 mb-2" readonly></textarea>
+                </div>
+        </div>
+
+    </div>
+
+
+  
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsrsasign/10.8.6/jsrsasign-all-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsencrypt/3.1.0/jsencrypt.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="javascript.js"></script>
+   
+</body>
+</html>
